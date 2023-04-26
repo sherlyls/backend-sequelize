@@ -34,4 +34,16 @@ router.get('/bayar', (req, res) => {
     })
 })
 
+router.put('/', async(req, res) => {
+    const {nip, nama, password} = req.body
+
+    const users = await UsersModel.create({
+        nip, nama, password
+    })
+    res.status(200).json({
+        data: users, // masuk ke tabel users
+        metadata: "test post user endpoint"
+    })
+})
+
 module.exports = router
